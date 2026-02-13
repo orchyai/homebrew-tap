@@ -2,8 +2,6 @@
 
 After approving a plan, Orchy begins executing tasks across your projects using Claude Code agents.
 
-![Session Execution view](../images/session-execution.png)
-
 ---
 
 ## Session View Layout

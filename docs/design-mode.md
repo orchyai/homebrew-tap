@@ -2,8 +2,6 @@
 
 Design Mode lets you create a complete design system through an interactive conversation with a Designer Agent.
 
-![Design Assistant — chat with component catalog and page management](../images/design-assistant.png)
-
 ---
 
 ## Workflow
