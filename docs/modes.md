@@ -2,6 +2,8 @@
 
 Orchy offers three primary modes of operation.
 
+![Workspace dashboard — Build Feature, Deploy, and Sessions](../images/workspace-dashboard.png)
+
 ---
 
 ## Build Mode

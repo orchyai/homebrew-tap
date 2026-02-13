@@ -4,6 +4,8 @@
 
 Orchy lets you describe what you want to build and handles the rest: an AI planning agent refines your feature, explores your codebase, generates a detailed implementation plan, and then coordinates multiple Claude Code agents to execute the work across your projects — all while you stay in control through an interactive web UI.
 
+![Session Execution — agents working on tasks across frontend and backend projects](images/session-execution.png)
+
 ---
 
 ## Key Features
@@ -11,6 +13,11 @@ Orchy lets you describe what you want to build and handles the rest: an AI plann
 - **Build Mode** — Describe a feature in plain English. A planning agent breaks it down into tasks, then multiple Claude Code agents implement it across your projects in parallel.
 - **Design Mode** — Create a full design system through an interactive chat: color palettes, typography, component styles, and full-page HTML mockups — before writing any code.
 - **Deployment Mode** — Provision cloud infrastructure, set up CI/CD pipelines, and deploy your projects through an AI-guided workflow.
+
+<p>
+<img src="images/workspace-dashboard.png" alt="Workspace dashboard — Build Feature, Deploy, and Sessions" width="600" />
+<img src="images/design-assistant.png" alt="Design Assistant — interactive chat with page management" width="600" />
+</p>
 - **Multi-project workspaces** — Manage frontend, backend, and fullstack projects in a single workspace with shared context.
 - **Web UI** — Real-time session monitoring, task tracking, plan review and approval, all from your browser.
 - **Project templates** — Scaffold new projects from built-in templates (Vite + React, NestJS, fullstack) or bring your own.

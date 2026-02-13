@@ -2,6 +2,8 @@
 
 Orchy can provision cloud infrastructure and set up CI/CD pipelines for your projects.
 
+![Deployment view — provider selection and active deployment details](../images/deployment.png)
+
 ---
 
 ## Requirements
