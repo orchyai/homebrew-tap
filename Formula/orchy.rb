@@ -1,29 +1,28 @@
 class Orchy < Formula
   desc "Multi-agent orchestrator for Claude Code"
   homepage "https://github.com/orchyai/homebrew-tap"
-  version "1.0.0"
+  version "0.1.0"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/orchyai/homebrew-tap/releases/download/v#{version}/orchy-macos-arm64"
-      sha256 "PLACEHOLDER_SHA256_MACOS_ARM64"
+      url "https://github.com/orchyai/homebrew-tap/releases/download/v0.1.0/orchy-macos-arm64"
+      sha256 "8d1088b64bbee7a40e91588f3e3bcf9f04961b3444f7398d5418b66080955344"
     end
     on_intel do
-      url "https://github.com/orchyai/homebrew-tap/releases/download/v#{version}/orchy-macos-x64"
-      sha256 "PLACEHOLDER_SHA256_MACOS_X64"
+      url "https://github.com/orchyai/homebrew-tap/releases/download/v0.1.0/orchy-macos-x64"
+      sha256 "0ed8e6d159a719b9f6072263fa4e98061996aad59aff0cbe22d2bb7ff23003e3"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/orchyai/homebrew-tap/releases/download/v#{version}/orchy-linux-x64"
-      sha256 "PLACEHOLDER_SHA256_LINUX_X64"
+      url "https://github.com/orchyai/homebrew-tap/releases/download/v0.1.0/orchy-linux-x64"
+      sha256 "c4f7c8b588eb67ad992743d49551d05317df614dbf47681e6df5178c6573dece"
     end
   end
 
   def install
-    # The downloaded file is the binary itself (not a tarball)
     if OS.mac?
       if Hardware::CPU.arm?
         bin.install "orchy-macos-arm64" => "orchy"
@@ -54,6 +53,6 @@ class Orchy < Formula
   end
 
   test do
-    assert_match "version", shell_output("#{bin}/orchy --help")
+    assert_match "version", shell_output("\#{bin}/orchy --help")
   end
 end
