@@ -72,7 +72,6 @@ See the [full table of contents](docs/README.md) for all topics.
 
 Examples of designs generated with Orchy's Design Mode:
 
-- [Cinematic Editorial](https://orchyai.github.io/homebrew-tap/designs/cinematic/)
 - [Creative Experiment](https://orchyai.github.io/homebrew-tap/designs/creative-experiment/)
 - [Prism Art Direction](https://orchyai.github.io/homebrew-tap/designs/prism/)
 
