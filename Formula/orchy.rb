@@ -1,28 +1,28 @@
 class Orchy < Formula
   desc "Multi-agent orchestrator for Claude Code"
   homepage "https://github.com/orchyai/homebrew-tap"
-  version "0.1.2"
+  version "0.1.3"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/orchyai/homebrew-tap/releases/download/v0.1.2/orchy-macos-arm64"
-      sha256 "6a113d162b92a7398616883372277372ee42d9a36c1ca6350d66ba8fae050c28"
+      url "https://github.com/orchyai/homebrew-tap/releases/download/v0.1.3/orchy-macos-arm64"
+      sha256 "8c41a84141fbfa155a9c1ccdb59d641ec03763ef72a08872213a0e54ea1fee9b"
     end
     on_intel do
-      url "https://github.com/orchyai/homebrew-tap/releases/download/v0.1.2/orchy-macos-x64"
-      sha256 "854856306692c8fcb51fe40a11cc2987045e24f37b5436d8745f75223f76dbdb"
+      url "https://github.com/orchyai/homebrew-tap/releases/download/v0.1.3/orchy-macos-x64"
+      sha256 "ede5b82eb37ad38d5e223f1f76f6aaaf22e8c356a12d97c318eb18650570dc6c"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/orchyai/homebrew-tap/releases/download/v0.1.2/orchy-linux-x64"
-      sha256 "b8d7eec53a3cb66d9b313010163497aef74150e72d8bab5d1e7a68f9821cddb8"
+      url "https://github.com/orchyai/homebrew-tap/releases/download/v0.1.3/orchy-linux-x64"
+      sha256 "cbdf9b88cf783403e1291d9a2121e4fc7e7689869db5e1c168dcdb0af410aee5"
     end
     on_arm do
-      url "https://github.com/orchyai/homebrew-tap/releases/download/v0.1.2/orchy-linux-arm64"
-      sha256 "67daf66fdbe7a0942b42489ce85c54ef4e6b9ecac04b99877175994d0616e01e"
+      url "https://github.com/orchyai/homebrew-tap/releases/download/v0.1.3/orchy-linux-arm64"
+      sha256 "68394a3e3b1e99dced5989716f2d329349099643cc6580e792ab97b29441cd0d"
     end
   end
 
