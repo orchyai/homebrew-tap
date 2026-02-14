@@ -68,6 +68,14 @@ Full documentation is available in the [`docs/`](docs/) folder:
 
 See the [full table of contents](docs/README.md) for all topics.
 
+## Design Showcase
+
+Examples of designs generated with Orchy's Design Mode:
+
+- [Cinematic Editorial](https://orchyai.github.io/homebrew-tap/designs/cinematic/)
+- [Creative Experiment](https://orchyai.github.io/homebrew-tap/designs/creative-experiment/)
+- [Prism Art Direction](https://orchyai.github.io/homebrew-tap/designs/prism/)
+
 ## Disclaimer
 
 Orchy is in early development and has only been tested on a limited number of machines. It is not guaranteed to work in every environment or without bugs. If you encounter issues, please open an issue on this repository.
