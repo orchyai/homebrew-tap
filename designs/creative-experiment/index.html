@@ -1,0 +1,782 @@
+<!-- LAYOUT: Brutalist Collage, CONTAINER: full-width, NAV: floating-pill -->
+<!-- SECTION_MANIFEST: nav, hero, manifesto, gallery, marquee, about, cta, footer -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analog Punch — Creative Experiment</title>
+<style>
+:root {
+  --primary-50: #fff5f0;
+  --primary-100: #ffe4d9;
+  --primary-200: #ffc4aa;
+  --primary-300: #ff9b73;
+  --primary-400: #ff6b3d;
+  --primary-500: #ff4518;
+  --primary-600: #e83a0f;
+  --primary-700: #c42d0a;
+  --primary-800: #9c2308;
+  --primary-900: #7a1c06;
+  --neutral-50: #fdf8f0;
+  --neutral-100: #f7ede0;
+  --neutral-200: #eedcc4;
+  --neutral-300: #e0c5a0;
+  --neutral-400: #c9a87a;
+  --neutral-500: #a88860;
+  --neutral-600: #8a6d48;
+  --neutral-700: #6e5438;
+  --neutral-800: #533d28;
+  --neutral-900: #3a2a1c;
+  --background: #fdf6ec;
+  --surface: #fff9f0;
+  --surface-elevated: #fff3e0;
+  --border: #e8d5b8;
+  --success: #2d9e5a;
+  --success-bg: #e8f5e9;
+  --warning: #e6a200;
+  --warning-bg: #fff8e1;
+  --error: #d63031;
+  --error-bg: #ffeaea;
+  --info: #0984e3;
+  --info-bg: #e3f2fd;
+  --text-heading: #2c1810;
+  --text-body: #4a3728;
+  --text-muted: #8a7260;
+  --text-link: var(--primary-600);
+  --text-link-hover: var(--primary-700);
+  --text-on-primary: #ffffff;
+  --text-on-secondary: var(--text-body);
+  --text-disabled: #b8a898;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-full: 9999px;
+  --shadow-sm: 3px 3px 0px #2c1810;
+  --shadow-md: 5px 5px 0px #2c1810;
+  --shadow-lg: 8px 8px 0px #2c1810;
+}
+
+/* RESET */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--background);
+  color: var(--text-body);
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+/* === COMPONENT: button === */
+.oc-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-8);
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border: 3px solid var(--text-heading);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.1s, box-shadow 0.1s;
+  position: relative;
+}
+.oc-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--text-heading);
+}
+.oc-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+.oc-button--primary {
+  background: var(--primary-500);
+  color: var(--text-on-primary);
+  box-shadow: var(--shadow-md);
+}
+.oc-button--outline {
+  background: transparent;
+  color: var(--text-heading);
+  box-shadow: var(--shadow-sm);
+}
+.oc-button--ghost {
+  background: transparent;
+  color: var(--text-heading);
+  border: none;
+  box-shadow: none;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+/* === END: button === */
+
+/* === COMPONENT: card === */
+.oc-card {
+  background: var(--surface);
+  border: 3px solid var(--text-heading);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.oc-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 11px 11px 0px var(--text-heading);
+}
+.oc-card__title {
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-2);
+}
+.oc-card__body {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-body);
+}
+/* === END: card === */
+
+/* === COMPONENT: badge === */
+.oc-badge {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border: 2px solid var(--text-heading);
+  background: var(--primary-100);
+  color: var(--primary-800);
+}
+/* === END: badge === */
+
+/* === COMPONENT: avatar === */
+.oc-avatar {
+  width: 60px;
+  height: 60px;
+  border: 3px solid var(--text-heading);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  font-size: 1.25rem;
+  background: var(--primary-200);
+  color: var(--primary-900);
+}
+/* === END: avatar === */
+
+/* KEYFRAMES */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-20px) rotate(1deg); }
+}
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-3px, 3px); }
+  40% { transform: translate(3px, -3px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(2px, 2px); }
+}
+@keyframes reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+@keyframes stampRotate {
+  from { transform: rotate(-8deg) scale(0); opacity: 0; }
+  to { transform: rotate(-8deg) scale(1); opacity: 1; }
+}
+@keyframes slideUp {
+  from { transform: translateY(60px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes borderDance {
+  0% { border-color: var(--primary-500); }
+  25% { border-color: var(--text-heading); }
+  50% { border-color: var(--warning); }
+  75% { border-color: var(--info); }
+  100% { border-color: var(--primary-500); }
+}
+@keyframes noise {
+  0%, 100% { background-position: 0 0; }
+  10% { background-position: -5% -10%; }
+  30% { background-position: 3% -15%; }
+  50% { background-position: 12% 9%; }
+  70% { background-position: 9% 4%; }
+  90% { background-position: -1% 7%; }
+}
+
+/* GRAIN OVERLAY */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  animation: noise 0.5s steps(5) infinite;
+}
+
+/* === SECTION: nav === */
+[data-section="nav"] {
+  position: fixed;
+  top: var(--space-6);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  background: var(--surface);
+  border: 3px solid var(--text-heading);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-2) var(--space-6);
+  animation: slideUp 0.8s ease-out;
+}
+[data-section="nav"] .nav-logo {
+  font-family: 'Courier New', monospace;
+  font-weight: 900;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-heading);
+  white-space: nowrap;
+}
+[data-section="nav"] .nav-links {
+  display: flex;
+  gap: var(--space-4);
+  list-style: none;
+}
+[data-section="nav"] .nav-links a {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-body);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+[data-section="nav"] .nav-links a:hover {
+  border-bottom-color: var(--primary-500);
+}
+/* === END: nav === */
+
+/* === SECTION: hero === */
+[data-section="hero"] {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: var(--space-12) var(--space-8);
+  overflow: hidden;
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+}
+.hero-headline {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 900;
+  line-height: 0.9;
+  color: var(--text-heading);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  animation: reveal 1.2s ease-out forwards;
+  margin-bottom: var(--space-6);
+}
+.hero-headline .accent {
+  color: var(--primary-500);
+  display: inline-block;
+  animation: glitch 3s ease-in-out infinite;
+}
+.hero-subline {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto var(--space-8);
+  line-height: 1.7;
+  animation: slideUp 1s ease-out 0.3s both;
+}
+.hero-stamp {
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  width: 150px;
+  height: 150px;
+  border: 4px solid var(--primary-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', monospace;
+  font-weight: 900;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--primary-600);
+  transform: rotate(-8deg);
+  animation: stampRotate 0.6s ease-out 1s both;
+  border-radius: var(--radius-full);
+  text-align: center;
+  line-height: 1.4;
+  padding: var(--space-4);
+}
+.hero-deco-line {
+  position: absolute;
+  bottom: 10%;
+  left: -5%;
+  width: 40%;
+  height: 4px;
+  background: var(--primary-500);
+  animation: reveal 1.5s ease-out 0.5s both;
+}
+.hero-deco-block {
+  position: absolute;
+  top: 20%;
+  left: 8%;
+  width: 80px;
+  height: 80px;
+  background: var(--warning);
+  border: 3px solid var(--text-heading);
+  box-shadow: var(--shadow-md);
+  animation: float 6s ease-in-out infinite;
+}
+.hero-deco-circle {
+  position: absolute;
+  bottom: 20%;
+  right: 12%;
+  width: 120px;
+  height: 120px;
+  border: 4px solid var(--text-heading);
+  border-radius: var(--radius-full);
+  animation: float 5s ease-in-out 1s infinite;
+}
+/* === END: hero === */
+
+/* === SECTION: marquee === */
+[data-section="marquee"] {
+  border-top: 3px solid var(--text-heading);
+  border-bottom: 3px solid var(--text-heading);
+  background: var(--primary-500);
+  padding: var(--space-4) 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-track {
+  display: inline-flex;
+  animation: ticker 20s linear infinite;
+}
+.marquee-item {
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-on-primary);
+  padding: 0 var(--space-8);
+}
+.marquee-item .separator {
+  color: var(--text-heading);
+  margin-left: var(--space-8);
+}
+/* === END: marquee === */
+
+/* === SECTION: manifesto === */
+[data-section="manifesto"] {
+  padding: 120px var(--space-8);
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+.manifesto-text {
+  animation: slideUp 0.8s ease-out both;
+}
+.manifesto-text .label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--primary-600);
+  margin-bottom: var(--space-4);
+  display: block;
+}
+.manifesto-text h2 {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  color: var(--text-heading);
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: var(--space-6);
+}
+.manifesto-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-body);
+  margin-bottom: var(--space-6);
+}
+.manifesto-visual {
+  position: relative;
+}
+.manifesto-image {
+  width: 100%;
+  aspect-ratio: 4/5;
+  border: 3px solid var(--text-heading);
+  box-shadow: var(--shadow-lg);
+  object-fit: cover;
+  display: block;
+}
+.manifesto-image-label {
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  background: var(--warning);
+  border: 3px solid var(--text-heading);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-2) var(--space-4);
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+/* === END: manifesto === */
+
+/* === SECTION: gallery === */
+[data-section="gallery"] {
+  padding: 100px var(--space-8);
+  background: var(--text-heading);
+}
+.gallery-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.gallery-header h2 {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 900;
+  color: var(--background);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.gallery-header p {
+  font-size: 1rem;
+  color: var(--neutral-400);
+  margin-top: var(--space-4);
+  font-style: italic;
+}
+.gallery-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: var(--space-6);
+}
+.gallery-item {
+  border: 3px solid var(--neutral-600);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.gallery-item:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0px var(--primary-500);
+  z-index: 2;
+}
+.gallery-item.large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(30%) contrast(1.1);
+  transition: filter 0.3s;
+}
+.gallery-item:hover img {
+  filter: grayscale(0%) contrast(1);
+}
+.gallery-item .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-4);
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  transform: translateY(100%);
+  transition: transform 0.3s;
+}
+.gallery-item:hover .overlay {
+  transform: translateY(0);
+}
+.overlay-title {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+/* === END: gallery === */
+
+/* === SECTION: about === */
+[data-section="about"] {
+  padding: 120px var(--space-8);
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+[data-section="about"] h2 {
+  font-family: 'Courier New', monospace;
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--text-heading);
+  margin-bottom: var(--space-8);
+  letter-spacing: 0.1em;
+}
+.about-bio {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: var(--text-body);
+  margin-bottom: var(--space-8);
+}
+.about-stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-12);
+  padding-top: var(--space-8);
+  border-top: 3px solid var(--text-heading);
+}
+.stat-item {
+  text-align: center;
+}
+.stat-number {
+  font-family: 'Courier New', monospace;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--primary-500);
+  display: block;
+}
+.stat-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  margin-top: var(--space-1);
+}
+/* === END: about === */
+
+/* === SECTION: cta === */
+[data-section="cta"] {
+  padding: 100px var(--space-8);
+  background: var(--primary-500);
+  border-top: 3px solid var(--text-heading);
+  border-bottom: 3px solid var(--text-heading);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+[data-section="cta"] h2 {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 900;
+  color: var(--text-on-primary);
+  text-transform: uppercase;
+  margin-bottom: var(--space-8);
+  position: relative;
+  z-index: 2;
+}
+[data-section="cta"] .cta-deco {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 4px solid rgba(255,255,255,0.2);
+  border-radius: var(--radius-full);
+  animation: float 8s ease-in-out infinite;
+}
+[data-section="cta"] .cta-deco.one { top: -50px; left: -50px; }
+[data-section="cta"] .cta-deco.two { bottom: -80px; right: -30px; width: 300px; height: 300px; animation-delay: 2s; }
+/* === END: cta === */
+
+/* === SECTION: footer === */
+[data-section="footer"] {
+  padding: var(--space-8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 3px solid var(--text-heading);
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+.footer-links {
+  display: flex;
+  gap: var(--space-6);
+  list-style: none;
+}
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover {
+  color: var(--primary-500);
+}
+/* === END: footer === */
+</style>
+</head>
+<body>
+
+<nav data-section="nav">
+  <div class="nav-logo">Studio &#9679;</div>
+  <ul class="nav-links">
+    <li><a href="#manifesto">Manifesto</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#contact" class="oc-button oc-button--primary" data-component="button" data-variant="primary" style="padding: var(--space-1) var(--space-4); font-size: 0.7rem;">Let's Talk</a>
+</nav>
+
+<section data-section="hero">
+  <div class="hero-deco-block"></div>
+  <div class="hero-deco-circle"></div>
+  <div class="hero-inner">
+    <h1 class="hero-headline">We Make<br><span class="accent">Bold</span> Things</h1>
+    <p class="hero-subline">A creative experiment in brutalist warmth. No rules, no templates, just raw ideas shaped into pixels.</p>
+    <a href="#work" class="oc-button oc-button--primary" data-component="button" data-variant="primary">See the Work</a>
+  </div>
+  <div class="hero-stamp">Est.<br>2026<br>&#9679;<br>Analog<br>Punch</div>
+  <div class="hero-deco-line"></div>
+</section>
+
+<div data-section="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">Design <span class="separator">&#9679;</span></span>
+    <span class="marquee-item">Create <span class="separator">&#9679;</span></span>
+    <span class="marquee-item">Destroy <span class="separator">&#9679;</span></span>
+    <span class="marquee-item">Rebuild <span class="separator">&#9679;</span></span>
+    <span class="marquee-item">Experiment <span class="separator">&#9679;</span></span>
+    <span class="marquee-item">Break Rules <span class="separator">&#9679;</span></span>
+    <span class="marquee-item">Design <span class="separator">&#9679;</span></span>
+    <span class="marquee-item">Create <span class="separator">&#9679;</span></span>
+    <span class="marquee-item">Destroy <span class="separator">&#9679;</span></span>
+    <span class="marquee-item">Rebuild <span class="separator">&#9679;</span></span>
+    <span class="marquee-item">Experiment <span class="separator">&#9679;</span></span>
+    <span class="marquee-item">Break Rules <span class="separator">&#9679;</span></span>
+  </div>
+</div>
+
+<section data-section="manifesto" id="manifesto">
+  <div class="manifesto-text">
+    <span class="label">Our Manifesto</span>
+    <h2>Design Should Feel Alive</h2>
+    <p>We believe in raw, imperfect beauty. In hard edges and warm colors. In designs that look like they were made by humans, not algorithms. Every pixel has intention, every choice has meaning.</p>
+    <p>This is not minimalism. This is not maximalism. This is analog punch.</p>
+    <a class="oc-button oc-button--outline" data-component="button" data-variant="outline" href="#">Read More</a>
+  </div>
+  <div class="manifesto-visual">
+    <img src="https://placehold.co/600x750/e83a0f/ffffff?text=RAW" alt="Manifesto visual" class="manifesto-image">
+    <div class="manifesto-image-label">Fig. 01 — Process</div>
+  </div>
+</section>
+
+<section data-section="gallery" id="work">
+  <div class="gallery-header">
+    <h2>Selected Work</h2>
+    <p>A collection of things we made and aren't ashamed of</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item large">
+      <img src="https://placehold.co/800x800/3a2a1c/fdf6ec?text=Project+Alpha" alt="Project Alpha">
+      <div class="overlay"><span class="overlay-title">Project Alpha — Branding</span></div>
+    </div>
+    <div class="gallery-item" data-component="card">
+      <img src="https://placehold.co/400x400/e83a0f/ffffff?text=Beta" alt="Project Beta">
+      <div class="overlay"><span class="overlay-title">Project Beta — Web</span></div>
+    </div>
+    <div class="gallery-item" data-component="card">
+      <img src="https://placehold.co/400x400/e6a200/2c1810?text=Gamma" alt="Project Gamma">
+      <div class="overlay"><span class="overlay-title">Project Gamma — Print</span></div>
+    </div>
+    <div class="gallery-item" data-component="card">
+      <img src="https://placehold.co/400x400/fdf6ec/2c1810?text=Delta" alt="Project Delta">
+      <div class="overlay"><span class="overlay-title">Project Delta — Motion</span></div>
+    </div>
+    <div class="gallery-item" data-component="card">
+      <img src="https://placehold.co/400x400/2c1810/ff4518?text=Epsilon" alt="Project Epsilon">
+      <div class="overlay"><span class="overlay-title">Project Epsilon — 3D</span></div>
+    </div>
+  </div>
+</section>
+
+<section data-section="about" id="about">
+  <h2>Who We Are</h2>
+  <p class="about-bio">A small collective of designers, developers, and troublemakers who believe the web needs more personality. We're based everywhere and nowhere. Our tools are pixels, code, and strong opinions about typography.</p>
+  <div class="about-stats">
+    <div class="stat-item">
+      <span class="stat-number">47</span>
+      <span class="stat-label">Projects</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">12</span>
+      <span class="stat-label">Awards</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">&#8734;</span>
+      <span class="stat-label">Coffee</span>
+    </div>
+  </div>
+</section>
+
+<section data-section="cta" id="contact">
+  <div class="cta-deco one"></div>
+  <div class="cta-deco two"></div>
+  <h2>Got a Wild Idea?<br>Let's Make It Real.</h2>
+  <a class="oc-button oc-button--outline" data-component="button" data-variant="outline" href="#" style="background: white; color: var(--primary-700); border-color: white;">Start a Project</a>
+</section>
+
+<footer data-section="footer">
+  <span>&copy; 2026 Studio Analog Punch</span>
+  <ul class="footer-links">
+    <li><a href="#">Twitter</a></li>
+    <li><a href="#">Instagram</a></li>
+    <li><a href="#">Dribbble</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>

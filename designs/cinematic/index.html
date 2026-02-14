@@ -1,0 +1,743 @@
+<!-- LAYOUT: Full-Bleed Cinematic, CONTAINER: full-width, NAV: overlay -->
+<!-- SECTION_MANIFEST: nav, hero, features_grid, social_proof, testimonials, cta, footer -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atelier Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-50: #ecfdf5;
+      --primary-100: #d1fae5;
+      --primary-200: #a7f3d0;
+      --primary-300: #6ee7b7;
+      --primary-400: #34d399;
+      --primary-500: #10b981;
+      --primary-600: #059669;
+      --primary-700: #047857;
+      --primary-800: #065f46;
+      --primary-900: #064e3b;
+      --neutral-50: #fdfcfa;
+      --neutral-100: #f9f7f3;
+      --neutral-200: #f0ece4;
+      --neutral-300: #e2dbd0;
+      --neutral-400: #b8ad9e;
+      --neutral-500: #8c8072;
+      --neutral-600: #68604f;
+      --neutral-700: #504a3c;
+      --neutral-800: #36322a;
+      --neutral-900: #1e1c17;
+      --background: #fdfcfa;
+      --surface: #ffffff;
+      --surface-elevated: #f9f7f3;
+      --border: #f0ece4;
+      --success: #10b981;
+      --success-bg: #d1fae5;
+      --warning: #eab308;
+      --warning-bg: #fef9c3;
+      --error: #e11d48;
+      --error-bg: #ffe4e6;
+      --info: #0ea5e9;
+      --info-bg: #e0f2fe;
+      --text-heading: #1e1c17;
+      --text-body: #504a3c;
+      --text-muted: #8c8072;
+      --text-link: var(--primary-600);
+      --text-link-hover: var(--primary-700);
+      --text-on-primary: #ffffff;
+      --text-on-secondary: var(--text-body);
+      --text-disabled: #b8ad9e;
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --radius-sm: 0.25rem;
+      --radius-md: 0.625rem;
+      --radius-lg: 1.25rem;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 3px rgba(6, 78, 59, 0.04);
+      --shadow-md: 0 4px 10px rgba(6, 78, 59, 0.06);
+      --shadow-lg: 0 12px 28px rgba(6, 78, 59, 0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--background);
+      color: var(--text-body);
+      overflow-x: hidden;
+    }
+
+    /* === COMPONENT: button === */
+    .oc-button {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 16px 36px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .oc-button--primary {
+      background: var(--text-heading);
+      color: var(--background);
+      border-radius: 0;
+    }
+    .oc-button--primary:hover {
+      background: var(--primary-800);
+      color: var(--text-on-primary);
+      letter-spacing: 0.08em;
+    }
+    .oc-button--outline {
+      background: transparent;
+      color: var(--text-heading);
+      border: 1.5px solid var(--text-heading);
+      border-radius: 0;
+    }
+    .oc-button--outline:hover {
+      background: var(--text-heading);
+      color: var(--background);
+    }
+    .oc-button--ghost {
+      background: transparent;
+      color: var(--text-heading);
+      padding: 12px 0;
+      font-weight: 400;
+      font-size: 16px;
+      position: relative;
+    }
+    .oc-button--ghost::after {
+      content: '';
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--text-heading);
+      transition: width 0.3s ease;
+    }
+    .oc-button--ghost:hover::after {
+      width: 100%;
+    }
+    /* === END: button === */
+
+    /* === COMPONENT: badge === */
+    .oc-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 0;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--primary-700);
+      border-bottom: 1px solid var(--primary-300);
+    }
+    /* === END: badge === */
+
+    /* === COMPONENT: card === */
+    .oc-card {
+      padding: 48px;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      border: none;
+      background: transparent;
+    }
+    .oc-card__number {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 700;
+      color: var(--primary-100);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .oc-card__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 12px;
+    }
+    .oc-card__text {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 360px;
+    }
+    .oc-card__line {
+      width: 48px;
+      height: 2px;
+      background: var(--primary-500);
+      margin-bottom: 24px;
+      transition: width 0.4s ease;
+    }
+    .oc-card:hover .oc-card__line {
+      width: 80px;
+    }
+    /* === END: card === */
+
+    /* === COMPONENT: testimonial_quote === */
+    .oc-testimonial-quote {
+      padding: 0;
+      background: transparent;
+      border: none;
+    }
+    .oc-testimonial-quote__text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 32px;
+      color: var(--text-heading);
+      line-height: 1.4;
+      margin-bottom: 32px;
+    }
+    .oc-testimonial-quote__author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .oc-testimonial-quote__name {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text-heading);
+    }
+    .oc-testimonial-quote__role {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .oc-testimonial-quote__divider {
+      width: 48px;
+      height: 1px;
+      background: var(--neutral-300);
+      margin-bottom: 24px;
+    }
+    /* === END: testimonial_quote === */
+
+    /* === COMPONENT: avatar === */
+    .oc-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 0;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .oc-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* === END: avatar === */
+
+    /* === COMPONENT: feature_icon_box === */
+    .oc-feature-icon-box {
+      text-align: center;
+      padding: 40px;
+    }
+    .oc-feature-icon-box__icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      border: 1px solid var(--border);
+    }
+    .oc-feature-icon-box__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 8px;
+    }
+    .oc-feature-icon-box__description {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    /* === END: feature_icon_box === */
+
+    /* === SECTION: nav === */
+    [data-section="nav"] {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 32px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-heading);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .nav-cta-wrap {
+      margin-left: 24px;
+    }
+    /* === END: nav === */
+
+    /* === SECTION: hero === */
+    [data-section="hero"] {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 64px 80px;
+      position: relative;
+    }
+    .hero-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(120px, 18vw, 280px);
+      font-weight: 700;
+      color: var(--neutral-100);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+    }
+    .hero-left h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(52px, 6vw, 88px);
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+    }
+    .hero-left h1 em {
+      font-style: italic;
+      color: var(--primary-700);
+    }
+    .hero-right {
+      max-width: 420px;
+      justify-self: end;
+    }
+    .hero-right p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    .hero-right .hero-actions {
+      display: flex;
+      gap: 16px;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--neutral-300), transparent);
+    }
+    /* === END: hero === */
+
+    /* === SECTION: features_grid === */
+    [data-section="features_grid"] {
+      padding: 160px 64px;
+      position: relative;
+    }
+    .features-layout {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .features-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 100px;
+      gap: 80px;
+    }
+    .features-top h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.1;
+      max-width: 480px;
+      flex-shrink: 0;
+    }
+    .features-top p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      max-width: 400px;
+      padding-top: 16px;
+    }
+    .features-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+    }
+    .features-cards .oc-card {
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .features-cards .oc-card:nth-child(3n) {
+      border-right: none;
+    }
+    .features-cards .oc-card:hover {
+      background: var(--surface-elevated);
+    }
+    /* === END: features_grid === */
+
+    /* === SECTION: social_proof === */
+    [data-section="social_proof"] {
+      padding: 100px 64px;
+      overflow: hidden;
+    }
+    .social-proof-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .social-proof-label {
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+    }
+    .social-proof-marquee {
+      display: flex;
+      align-items: center;
+      gap: 80px;
+    }
+    .logo-item {
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--neutral-200);
+      white-space: nowrap;
+      transition: color 0.3s ease;
+    }
+    .logo-item:hover {
+      color: var(--neutral-500);
+    }
+    .logo-divider {
+      width: 1px;
+      height: 32px;
+      background: var(--neutral-200);
+      flex-shrink: 0;
+    }
+    /* === END: social_proof === */
+
+    /* === SECTION: testimonials === */
+    [data-section="testimonials"] {
+      padding: 160px 64px;
+      background: var(--neutral-900);
+    }
+    .testimonials-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .testimonials-label {
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--neutral-500);
+      margin-bottom: 64px;
+    }
+    [data-section="testimonials"] .oc-testimonial-quote__text {
+      color: var(--neutral-50);
+      font-size: 36px;
+      text-align: center;
+    }
+    [data-section="testimonials"] .oc-testimonial-quote__divider {
+      margin: 0 auto 24px;
+      background: var(--neutral-700);
+    }
+    [data-section="testimonials"] .oc-testimonial-quote__author {
+      justify-content: center;
+    }
+    [data-section="testimonials"] .oc-testimonial-quote__name {
+      color: var(--neutral-200);
+    }
+    [data-section="testimonials"] .oc-testimonial-quote__role {
+      color: var(--neutral-500);
+    }
+    [data-section="testimonials"] .oc-avatar {
+      border: 1px solid var(--neutral-700);
+    }
+    /* === END: testimonials === */
+
+    /* === SECTION: cta === */
+    [data-section="cta"] {
+      padding: 200px 64px;
+      text-align: center;
+      position: relative;
+    }
+    .cta-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    .cta-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--primary-600);
+      margin-bottom: 32px;
+    }
+    .cta-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(44px, 5vw, 72px);
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+    .cta-inner h2 em {
+      font-style: italic;
+      color: var(--primary-700);
+    }
+    .cta-inner p {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+    .cta-bg-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      border: 1px solid var(--primary-100);
+      pointer-events: none;
+    }
+    .cta-bg-circle:nth-of-type(2) {
+      width: 700px;
+      height: 700px;
+      border-color: var(--neutral-200);
+    }
+    /* === END: cta === */
+
+    /* === SECTION: footer === */
+    [data-section="footer"] {
+      padding: 48px 64px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+    .footer-links a {
+      font-size: 14px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: var(--text-heading);
+    }
+    .footer-right {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    /* === END: footer === */
+  </style>
+</head>
+<body>
+
+<nav data-section="nav">
+  <a class="nav-logo" href="#">Atelier</a>
+  <div class="nav-links">
+    <a class="oc-button oc-button--ghost" data-component="button" data-variant="ghost" href="#">Work</a>
+    <a class="oc-button oc-button--ghost" data-component="button" data-variant="ghost" href="#">Process</a>
+    <a class="oc-button oc-button--ghost" data-component="button" data-variant="ghost" href="#">Studio</a>
+    <div class="nav-cta-wrap">
+      <a class="oc-button oc-button--primary" data-component="button" data-variant="primary" href="#">Get in Touch</a>
+    </div>
+  </div>
+</nav>
+
+<section data-section="hero">
+  <div class="hero-bg-text">Atelier</div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <h1>Design that<br>speaks <em>volumes</em></h1>
+    </div>
+    <div class="hero-right">
+      <p>We are a studio of designers, thinkers, and makers who believe the best digital experiences are felt, not just seen.</p>
+      <div class="hero-actions">
+        <a class="oc-button oc-button--primary" data-component="button" data-variant="primary" href="#">Explore Work</a>
+        <a class="oc-button oc-button--outline" data-component="button" data-variant="outline" href="#">Our Process</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-section="social_proof">
+  <div class="social-proof-inner">
+    <div class="social-proof-label">Partners & Clients</div>
+    <div class="social-proof-marquee">
+      <span class="logo-item">Google</span>
+      <div class="logo-divider"></div>
+      <span class="logo-item">Spotify</span>
+      <div class="logo-divider"></div>
+      <span class="logo-item">Airbnb</span>
+      <div class="logo-divider"></div>
+      <span class="logo-item">Stripe</span>
+      <div class="logo-divider"></div>
+      <span class="logo-item">Notion</span>
+      <div class="logo-divider"></div>
+      <span class="logo-item">Linear</span>
+    </div>
+  </div>
+</section>
+
+<section data-section="features_grid">
+  <div class="features-layout">
+    <div class="features-top">
+      <h2>How we create impact</h2>
+      <p>Every project is a conversation between ambition and craft. We listen deeply, then design with conviction.</p>
+    </div>
+    <div class="features-cards">
+      <div class="oc-card" data-component="card">
+        <div class="oc-card__number">01</div>
+        <div class="oc-card__line"></div>
+        <div class="oc-card__title">Discovery</div>
+        <div class="oc-card__text">Deep-dive research into your brand, market, and audience before a single pixel is placed.</div>
+      </div>
+      <div class="oc-card" data-component="card">
+        <div class="oc-card__number">02</div>
+        <div class="oc-card__line"></div>
+        <div class="oc-card__title">Strategy</div>
+        <div class="oc-card__text">Translating insights into a clear creative direction that aligns with your business goals.</div>
+      </div>
+      <div class="oc-card" data-component="card">
+        <div class="oc-card__number">03</div>
+        <div class="oc-card__line"></div>
+        <div class="oc-card__title">Design</div>
+        <div class="oc-card__text">Crafting every detail with intention - from typography systems to micro-interactions.</div>
+      </div>
+      <div class="oc-card" data-component="card">
+        <div class="oc-card__number">04</div>
+        <div class="oc-card__line"></div>
+        <div class="oc-card__title">Motion</div>
+        <div class="oc-card__text">Bringing designs to life with purposeful animation that guides and delights.</div>
+      </div>
+      <div class="oc-card" data-component="card">
+        <div class="oc-card__number">05</div>
+        <div class="oc-card__line"></div>
+        <div class="oc-card__title">Development</div>
+        <div class="oc-card__text">Pixel-perfect implementation with modern technologies and performance-first thinking.</div>
+      </div>
+      <div class="oc-card" data-component="card">
+        <div class="oc-card__number">06</div>
+        <div class="oc-card__line"></div>
+        <div class="oc-card__title">Launch</div>
+        <div class="oc-card__text">Strategic deployment with analytics, testing, and continuous refinement post-launch.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-section="testimonials">
+  <div class="testimonials-inner">
+    <div class="testimonials-label">What They Say</div>
+    <div class="oc-testimonial-quote" data-component="testimonial_quote">
+      <div class="oc-testimonial-quote__text">"Working with Atelier felt like finding a creative partner who truly understood our vision. They elevated everything we imagined and delivered something beyond what we thought possible."</div>
+      <div class="oc-testimonial-quote__divider"></div>
+      <div class="oc-testimonial-quote__author">
+        <div class="oc-avatar" data-component="avatar"><img src="https://placehold.co/48x48/f9f7f3/504a3c?text=JR" alt="Jamie Rivera"></div>
+        <div>
+          <div class="oc-testimonial-quote__name">Jamie Rivera</div>
+          <div class="oc-testimonial-quote__role">VP Design, Luminary</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-section="cta">
+  <div class="cta-bg-circle"></div>
+  <div class="cta-bg-circle" style="width:700px;height:700px;border-color:var(--neutral-200);"></div>
+  <div class="cta-inner">
+    <div class="cta-eyebrow">Let's Create Together</div>
+    <h2>Your next project deserves to be <em>extraordinary</em></h2>
+    <p>Tell us about your vision and we'll show you what's possible.</p>
+    <a class="oc-button oc-button--primary" data-component="button" data-variant="primary" href="#">Start a Conversation</a>
+  </div>
+</section>
+
+<footer data-section="footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <a class="nav-logo" href="#" style="font-size:20px;">Atelier</a>
+      <div class="footer-links">
+        <a href="#">Work</a>
+        <a href="#">Process</a>
+        <a href="#">Studio</a>
+        <a href="#">Careers</a>
+        <a href="#">Twitter</a>
+        <a href="#">Dribbble</a>
+      </div>
+    </div>
+    <div class="footer-right">
+      &copy; 2026 Atelier Studio
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

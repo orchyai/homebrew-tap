@@ -18,10 +18,14 @@ Orchy lets you describe what you want to build and handles the rest: an AI plann
 
 ## Prerequisites
 
-- **[Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code)** — Orchy uses the Claude Code CLI to run AI agents. Must be installed and authenticated.
-- **Git** — Required for version control features.
-- **GitHub CLI (`gh`)** — Optional. Required for GitHub integration (repo creation, secrets, deployment workflows).
-- **Node.js 18+** — Required runtime.
+**Required:**
+- **[Node.js 18+](https://nodejs.org)** — Runtime (includes npm on macOS/Windows; on Linux you may need `sudo apt install npm` separately)
+- **npm** — Package manager for project setup and installing Claude Code
+- **[Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code)** — AI agents. Install with `npm install -g @anthropic-ai/claude-code`, then run `claude auth login`
+- **Git** — Version control and branch management
+
+**Optional:**
+- **[GitHub CLI (`gh`)](https://cli.github.com)** — For GitHub integration (repo creation, secrets, deployment workflows). Install with `brew install gh`
 
 ## Installation
 
@@ -63,6 +67,10 @@ Full documentation is available in the [`docs/`](docs/) folder:
 - **[Troubleshooting](docs/troubleshooting.md)** — Common issues and solutions
 
 See the [full table of contents](docs/README.md) for all topics.
+
+## Disclaimer
+
+Orchy is in early development and has only been tested on a limited number of machines. It is not guaranteed to work in every environment or without bugs. If you encounter issues, please open an issue on this repository.
 
 ## License
 

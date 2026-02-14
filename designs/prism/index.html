@@ -1,0 +1,417 @@
+<!-- LAYOUT: Asymmetric Art Direction, CONTAINER: narrow, NAV: side-strip -->
+<!-- SECTION_MANIFEST: nav, hero, about, gallery, capabilities, contact, footer -->
+<style>
+  :root {
+    --primary-50: #fdf2f8;
+    --primary-100: #fce7f3;
+    --primary-200: #fbcfe8;
+    --primary-300: #f9a8d4;
+    --primary-400: #f472b6;
+    --primary-500: #ec4899;
+    --primary-600: #db2777;
+    --primary-700: #be185d;
+    --primary-800: #9d174d;
+    --primary-900: #831843;
+    --neutral-50: #fafafa;
+    --neutral-100: #f4f4f5;
+    --neutral-200: #e4e4e7;
+    --neutral-300: #d4d4d8;
+    --neutral-400: #a1a1aa;
+    --neutral-500: #71717a;
+    --neutral-600: #52525b;
+    --neutral-700: #3f3f46;
+    --neutral-800: #27272a;
+    --neutral-900: #18181b;
+    --background: #ffffff;
+    --surface: #ffffff;
+    --surface-elevated: #fef7ff;
+    --border: #f0e0f0;
+    --success: #10b981;
+    --success-bg: #d1fae5;
+    --warning: #f59e0b;
+    --warning-bg: #fef3c7;
+    --error: #ef4444;
+    --error-bg: #fee2e2;
+    --info: #6366f1;
+    --info-bg: #e0e7ff;
+    --text-heading: #18181b;
+    --text-body: #3f3f46;
+    --text-muted: #71717a;
+    --text-link: var(--primary-600);
+    --text-link-hover: var(--primary-700);
+    --text-on-primary: #ffffff;
+    --text-on-secondary: var(--text-body);
+    --text-disabled: #a1a1aa;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --radius-sm: 0.5rem;
+    --radius-md: 1rem;
+    --radius-lg: 1.5rem;
+    --radius-full: 9999px;
+    --shadow-sm: 0 2px 8px rgba(219, 39, 119, 0.08);
+    --shadow-md: 0 8px 24px rgba(219, 39, 119, 0.12);
+    --shadow-lg: 0 16px 48px rgba(219, 39, 119, 0.16);
+
+    --accent-cyan: #06b6d4;
+    --accent-yellow: #facc15;
+    --accent-lime: #84cc16;
+    --accent-violet: #8b5cf6;
+    --accent-orange: #f97316;
+    --accent-rose: #fb7185;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--background); color: var(--text-body); overflow-x: hidden; }
+
+  /* === COMPONENT: button === */
+  .oc-button { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-8); font-weight: 700; font-size: 0.95rem; text-decoration: none; border: none; cursor: pointer; transition: all 0.3s ease; }
+  .oc-button--primary { background: var(--primary-600); color: var(--text-on-primary); border-radius: 0; clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%); padding-right: 3rem; }
+  .oc-button--primary:hover { background: var(--primary-700); clip-path: polygon(0 0, 100% 0, 100% 100%, 5% 100%); }
+  .oc-button--outline { background: transparent; color: var(--text-heading); border: 2px solid var(--text-heading); border-radius: 0; }
+  .oc-button--outline:hover { background: var(--text-heading); color: var(--background); }
+  .oc-button--ghost { background: transparent; color: var(--text-muted); padding: var(--space-2) 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; }
+  .oc-button--ghost:hover { color: var(--primary-600); }
+  /* === END: button === */
+
+  /* === COMPONENT: card === */
+  .oc-card { padding: var(--space-8); transition: all 0.3s ease; }
+  .oc-card__title { font-weight: 800; color: var(--text-heading); margin-bottom: var(--space-2); font-size: 1.25rem; letter-spacing: -0.02em; }
+  .oc-card__text { color: var(--text-muted); line-height: 1.7; }
+  /* === END: card === */
+
+  /* === COMPONENT: badge === */
+  .oc-badge { display: inline-flex; align-items: center; padding: 0.25rem 0.75rem; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; }
+  .oc-badge--primary { background: var(--primary-600); color: white; }
+  .oc-badge--tag { background: transparent; border-left: 3px solid currentColor; padding-left: var(--space-3); border-radius: 0; }
+  /* === END: badge === */
+
+  /* === COMPONENT: input === */
+  .oc-input { width: 100%; padding: var(--space-4); border: none; border-bottom: 2px solid var(--neutral-200); background: transparent; font-size: 1rem; font-family: inherit; color: var(--text-heading); transition: border-color 0.3s; }
+  .oc-input:focus { outline: none; border-bottom-color: var(--primary-500); }
+  .oc-input--textarea { resize: vertical; min-height: 120px; border: 2px solid var(--neutral-200); padding: var(--space-4); }
+  .oc-input--textarea:focus { border-color: var(--primary-500); }
+  /* === END: input === */
+
+  /* === COMPONENT: avatar === */
+  .oc-avatar { width: 48px; height: 48px; border-radius: 0; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); object-fit: cover; }
+  /* === END: avatar === */
+
+  /* === SECTION: nav === */
+  [data-section="nav"] { position: fixed; left: 0; top: 0; bottom: 0; width: 72px; z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: var(--space-6) 0; background: var(--text-heading); }
+  .nav-logo { writing-mode: vertical-rl; text-orientation: mixed; font-weight: 900; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: white; }
+  .nav-dots { display: flex; flex-direction: column; gap: var(--space-4); align-items: center; }
+  .nav-dot { width: 8px; height: 8px; border-radius: var(--radius-full); background: rgba(255,255,255,0.3); transition: all 0.3s; cursor: pointer; }
+  .nav-dot:hover, .nav-dot--active { background: var(--primary-400); width: 10px; height: 10px; }
+  .nav-social { display: flex; flex-direction: column; gap: var(--space-3); align-items: center; }
+  .nav-social a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.7rem; font-weight: 600; writing-mode: vertical-rl; letter-spacing: 0.1em; }
+  .nav-social a:hover { color: var(--primary-400); }
+  /* === END: nav === */
+
+  .main-content { margin-left: 72px; }
+
+  /* === SECTION: hero === */
+  [data-section="hero"] { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 4rem; position: relative; }
+  .hero-eyebrow { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 700; color: var(--primary-600); margin-bottom: var(--space-8); }
+  .hero-title { font-size: clamp(3rem, 5vw, 5.5rem); font-weight: 900; letter-spacing: -0.06em; line-height: 0.9; margin-bottom: var(--space-8); }
+  .hero-title-line { display: block; }
+  .hero-title-line--accent { -webkit-text-stroke: 2px var(--text-heading); color: transparent; }
+  .hero-subtitle { font-size: 1.1rem; color: var(--text-muted); max-width: 400px; line-height: 1.7; margin-bottom: var(--space-8); }
+  .hero-actions { display: flex; gap: var(--space-4); }
+  .hero-right { position: relative; overflow: hidden; }
+  .hero-mosaic { display: grid; grid-template-columns: 1fr 1fr; height: 100%; }
+  .hero-tile { display: flex; align-items: center; justify-content: center; font-size: 4rem; transition: transform 0.6s ease; }
+  .hero-tile:hover { transform: scale(1.1); z-index: 2; }
+  .hero-tile--1 { background: var(--primary-500); }
+  .hero-tile--2 { background: var(--accent-cyan); }
+  .hero-tile--3 { background: var(--accent-yellow); }
+  .hero-tile--4 { background: var(--accent-violet); }
+  .hero-tile--5 { background: var(--accent-lime); }
+  .hero-tile--6 { background: var(--accent-orange); }
+  .hero-scroll-hint { position: absolute; bottom: 2rem; left: 4rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); font-weight: 600; }
+  /* === END: hero === */
+
+  /* === SECTION: about === */
+  [data-section="about"] { display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; }
+  .about-visual { background: var(--primary-50); display: flex; align-items: center; justify-content: center; padding: 4rem; position: relative; }
+  .about-shape { width: 300px; height: 300px; position: relative; }
+  .about-shape-circle { position: absolute; border-radius: var(--radius-full); }
+  .about-shape-circle--1 { width: 300px; height: 300px; border: 3px solid var(--primary-300); top: 0; left: 0; }
+  .about-shape-circle--2 { width: 200px; height: 200px; background: var(--accent-cyan); opacity: 0.2; top: 50px; left: 80px; }
+  .about-shape-circle--3 { width: 150px; height: 150px; background: var(--primary-500); opacity: 0.3; top: 20px; left: 20px; }
+  .about-text { display: flex; flex-direction: column; justify-content: center; padding: 4rem; }
+  .about-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 700; color: var(--primary-600); margin-bottom: var(--space-6); }
+  .about-text h2 { font-size: 2.5rem; font-weight: 900; letter-spacing: -0.04em; margin-bottom: var(--space-6); line-height: 1.1; }
+  .about-text p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: var(--space-6); max-width: 450px; }
+  .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); margin-top: var(--space-8); }
+  .about-stat-number { font-size: 2rem; font-weight: 900; letter-spacing: -0.04em; }
+  .about-stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 600; }
+  /* === END: about === */
+
+  /* === SECTION: gallery === */
+  [data-section="gallery"] { padding: 6rem 4rem; }
+  .gallery-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+  .gallery-header h2 { font-size: 3rem; font-weight: 900; letter-spacing: -0.04em; }
+  .gallery-masonry { columns: 3; column-gap: var(--space-4); }
+  .gallery-item { break-inside: avoid; margin-bottom: var(--space-4); position: relative; overflow: hidden; cursor: pointer; }
+  .gallery-image { width: 100%; display: block; transition: transform 0.6s ease; }
+  .gallery-item:hover .gallery-image { transform: scale(1.05); }
+  .gallery-info { position: absolute; bottom: 0; left: 0; right: 0; padding: var(--space-6); background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; transform: translateY(100%); transition: transform 0.4s ease; }
+  .gallery-item:hover .gallery-info { transform: translateY(0); }
+  .gallery-info h3 { font-weight: 800; font-size: 1.1rem; margin-bottom: var(--space-1); }
+  .gallery-info p { font-size: 0.85rem; opacity: 0.7; }
+  /* === END: gallery === */
+
+  /* === SECTION: capabilities === */
+  [data-section="capabilities"] { padding: 6rem 4rem; background: var(--text-heading); color: white; }
+  .capabilities-container { max-width: 1000px; margin: 0 auto; }
+  .capabilities-header { margin-bottom: 4rem; }
+  .capabilities-header h2 { font-size: 2.5rem; font-weight: 900; letter-spacing: -0.04em; color: white; }
+  .capabilities-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+  .capability-item { padding: var(--space-8); border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; transition: background 0.3s; }
+  .capability-item:hover { background: rgba(255,255,255,0.05); }
+  .capability-number { font-size: 3rem; font-weight: 900; opacity: 0.1; position: absolute; top: var(--space-4); right: var(--space-6); }
+  .capability-name { font-size: 1.25rem; font-weight: 800; margin-bottom: var(--space-3); color: white; }
+  .capability-desc { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+  .capability-color { width: 24px; height: 3px; margin-bottom: var(--space-4); }
+  /* === END: capabilities === */
+
+  /* === SECTION: contact === */
+  [data-section="contact"] { display: grid; grid-template-columns: 1fr 1fr; min-height: 70vh; }
+  .contact-info { background: var(--primary-600); color: white; display: flex; flex-direction: column; justify-content: center; padding: 4rem; }
+  .contact-info h2 { font-size: 3rem; font-weight: 900; letter-spacing: -0.04em; margin-bottom: var(--space-6); color: white; }
+  .contact-info p { font-size: 1.1rem; opacity: 0.8; line-height: 1.7; margin-bottom: var(--space-8); }
+  .contact-detail { margin-bottom: var(--space-4); }
+  .contact-detail-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.6; margin-bottom: var(--space-1); }
+  .contact-detail-value { font-weight: 700; font-size: 1.1rem; }
+  .contact-form { display: flex; flex-direction: column; justify-content: center; padding: 4rem; }
+  .form-group { margin-bottom: var(--space-6); }
+  .form-label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; color: var(--text-muted); margin-bottom: var(--space-2); }
+  /* === END: contact === */
+
+  /* === SECTION: footer === */
+  [data-section="footer"] { padding: var(--space-6) 4rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
+  .footer-text { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+  .footer-links { display: flex; gap: var(--space-6); }
+  .footer-links a { text-decoration: none; color: var(--text-muted); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+  .footer-links a:hover { color: var(--primary-600); }
+  /* === END: footer === */
+</style>
+
+<nav data-section="nav">
+  <div class="nav-logo">PRISM</div>
+  <div class="nav-dots">
+    <div class="nav-dot nav-dot--active"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+  </div>
+  <div class="nav-social">
+    <a href="#">TW</a>
+    <a href="#">DR</a>
+    <a href="#">IG</a>
+  </div>
+</nav>
+
+<div class="main-content">
+
+<section data-section="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Creative Studio — Est. 2024</div>
+    <h1 class="hero-title">
+      <span class="hero-title-line">We don't</span>
+      <span class="hero-title-line hero-title-line--accent">follow</span>
+      <span class="hero-title-line">trends.</span>
+    </h1>
+    <p class="hero-subtitle">We set them. A boundary-pushing creative studio that turns wild ideas into unforgettable digital experiences.</p>
+    <div class="hero-actions">
+      <button class="oc-button oc-button--primary" data-component="button" data-variant="primary">Explore Work</button>
+      <button class="oc-button oc-button--outline" data-component="button" data-variant="outline">About Us</button>
+    </div>
+    <div class="hero-scroll-hint">↓ Scroll to explore</div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-mosaic">
+      <div class="hero-tile hero-tile--1">✦</div>
+      <div class="hero-tile hero-tile--2">◆</div>
+      <div class="hero-tile hero-tile--3">●</div>
+      <div class="hero-tile hero-tile--4">▲</div>
+      <div class="hero-tile hero-tile--5">★</div>
+      <div class="hero-tile hero-tile--6">■</div>
+    </div>
+  </div>
+</section>
+
+<section data-section="about">
+  <div class="about-visual">
+    <div class="about-shape">
+      <div class="about-shape-circle about-shape-circle--1"></div>
+      <div class="about-shape-circle about-shape-circle--2"></div>
+      <div class="about-shape-circle about-shape-circle--3"></div>
+    </div>
+  </div>
+  <div class="about-text">
+    <div class="about-label">About PRISM</div>
+    <h2>Color is our<br>superpower.</h2>
+    <p>We're a crew of designers, developers, and dreamers who believe the internet deserves more color. Every project is a chance to push boundaries and create something nobody's seen before.</p>
+    <p>Founded in a garage. Now in studios worldwide. Still as wild as day one.</p>
+    <div class="about-stats">
+      <div>
+        <div class="about-stat-number" style="color: var(--primary-600);">147+</div>
+        <div class="about-stat-label">Projects</div>
+      </div>
+      <div>
+        <div class="about-stat-number" style="color: var(--accent-cyan);">32</div>
+        <div class="about-stat-label">Countries</div>
+      </div>
+      <div>
+        <div class="about-stat-number" style="color: var(--accent-violet);">12</div>
+        <div class="about-stat-label">Awards</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-section="gallery">
+  <div class="gallery-header">
+    <h2>Our Work</h2>
+    <button class="oc-button oc-button--outline" data-component="button" data-variant="outline">View All →</button>
+  </div>
+  <div class="gallery-masonry">
+    <div class="gallery-item">
+      <img class="gallery-image" src="https://placehold.co/400x500/ec4899/ffffff?text=Neon+Dreams" alt="Neon Dreams">
+      <div class="gallery-info">
+        <h3>Neon Dreams</h3>
+        <p>Festival Branding</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img class="gallery-image" src="https://placehold.co/400x300/06b6d4/ffffff?text=Aqua+Flow" alt="Aqua Flow">
+      <div class="gallery-info">
+        <h3>Aqua Flow</h3>
+        <p>App Design</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img class="gallery-image" src="https://placehold.co/400x450/8b5cf6/ffffff?text=Cosmic" alt="Cosmic">
+      <div class="gallery-info">
+        <h3>Cosmic</h3>
+        <p>Web Experience</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img class="gallery-image" src="https://placehold.co/400x350/facc15/18181b?text=Solar+Flare" alt="Solar Flare">
+      <div class="gallery-info">
+        <h3>Solar Flare</h3>
+        <p>Dashboard Design</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img class="gallery-image" src="https://placehold.co/400x400/f97316/ffffff?text=Ember" alt="Ember">
+      <div class="gallery-info">
+        <h3>Ember</h3>
+        <p>Brand Identity</p>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img class="gallery-image" src="https://placehold.co/400x300/84cc16/ffffff?text=GreenLeaf" alt="GreenLeaf">
+      <div class="gallery-info">
+        <h3>GreenLeaf</h3>
+        <p>Platform Design</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-section="capabilities">
+  <div class="capabilities-container">
+    <div class="capabilities-header">
+      <h2>Capabilities</h2>
+    </div>
+    <div class="capabilities-grid">
+      <div class="capability-item">
+        <div class="capability-color" style="background: var(--primary-500);"></div>
+        <div class="capability-number">01</div>
+        <div class="capability-name">Brand Strategy</div>
+        <div class="capability-desc">We define the essence of who you are and translate that into every touchpoint.</div>
+      </div>
+      <div class="capability-item">
+        <div class="capability-color" style="background: var(--accent-cyan);"></div>
+        <div class="capability-number">02</div>
+        <div class="capability-name">Visual Identity</div>
+        <div class="capability-desc">Logos, colors, typography, guidelines. The whole brand bible, but actually cool.</div>
+      </div>
+      <div class="capability-item">
+        <div class="capability-color" style="background: var(--accent-violet);"></div>
+        <div class="capability-number">03</div>
+        <div class="capability-name">Digital Design</div>
+        <div class="capability-desc">Websites, apps, dashboards. Interfaces that look incredible and actually work.</div>
+      </div>
+      <div class="capability-item">
+        <div class="capability-color" style="background: var(--accent-yellow);"></div>
+        <div class="capability-number">04</div>
+        <div class="capability-name">Motion & 3D</div>
+        <div class="capability-desc">Animations, transitions, three-dimensional worlds. We make things move.</div>
+      </div>
+      <div class="capability-item">
+        <div class="capability-color" style="background: var(--accent-orange);"></div>
+        <div class="capability-number">05</div>
+        <div class="capability-name">Development</div>
+        <div class="capability-desc">We don't just design pretty pictures. We build them into real, living products.</div>
+      </div>
+      <div class="capability-item">
+        <div class="capability-color" style="background: var(--accent-lime);"></div>
+        <div class="capability-number">06</div>
+        <div class="capability-name">Creative Direction</div>
+        <div class="capability-desc">Big-picture thinking that ties everything together into one cohesive vision.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-section="contact">
+  <div class="contact-info">
+    <h2>Let's make<br>something<br>wild.</h2>
+    <p>We're always up for a challenge. Whether it's a full rebrand or a single landing page, if you want bold - we're your people.</p>
+    <div class="contact-detail">
+      <div class="contact-detail-label">Email</div>
+      <div class="contact-detail-value">hello@prismstudio.co</div>
+    </div>
+    <div class="contact-detail">
+      <div class="contact-detail-label">Location</div>
+      <div class="contact-detail-value">NYC / London / Tokyo</div>
+    </div>
+  </div>
+  <div class="contact-form">
+    <div class="form-group">
+      <label class="form-label">Your Name</label>
+      <input class="oc-input" data-component="input" data-variant="text" type="text" placeholder="Jane Doe">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Email</label>
+      <input class="oc-input" data-component="input" data-variant="text" type="email" placeholder="jane@company.com">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Tell us about your project</label>
+      <textarea class="oc-input oc-input--textarea" data-component="input" data-variant="textarea" placeholder="I want something crazy..."></textarea>
+    </div>
+    <button class="oc-button oc-button--primary" data-component="button" data-variant="primary">Send It →</button>
+  </div>
+</section>
+
+<footer data-section="footer">
+  <div class="footer-text">© 2026 PRISM Studio. Break rules, not hearts.</div>
+  <div class="footer-links">
+    <a href="#">Twitter</a>
+    <a href="#">Dribbble</a>
+    <a href="#">Instagram</a>
+  </div>
+</footer>
+
+</div>
