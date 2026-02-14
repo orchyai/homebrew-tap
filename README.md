@@ -6,6 +6,10 @@ Multi-agent orchestrator for Claude Code
 
 Orchy lets you describe what you want to build and handles the rest: an AI planning agent refines your feature, explores your codebase, generates a detailed implementation plan, and then coordinates multiple Claude Code agents to execute the work across your projects — all while you stay in control through an interactive web UI.
 
+<p align="center">
+  <img src="images/demo.gif" alt="Orchy demo" width="800" />
+</p>
+
 ---
 
 ## Key Features
