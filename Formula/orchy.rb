@@ -2,7 +2,6 @@ class Orchy < Formula
   desc "Multi-agent orchestrator for Claude Code"
   homepage "https://github.com/orchyai/homebrew-tap"
   version "0.1.3"
-  license "MIT"
 
   on_macos do
     on_arm do
